@@ -1,0 +1,19 @@
+{
+  "name": "codestepbystep",
+  "version": "1.0.0",
+  "description": "learning node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sugale360/LearningNode.git"
+  },
+  "author": "Sagar Ugale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sugale360/LearningNode/issues"
+  },
+  "homepage": "https://github.com/sugale360/LearningNode#readme"
+}
