@@ -23,16 +23,24 @@
 // }).listen(4500);
 //---------------------------------------------------
 
-const input = process.argv;
-console.log(input);
-const { log } = require('console');
+// const input = process.argv;
+// console.log(input);
+// const { log } = require('console');
+// const fs = require('fs');
+// if(input[2]=='add'){
+//     fs.writeFileSync(input[3],input[4])
+// }
+// else if(input[2]=='remove'){
+//     fs.unlinkSync(input[3])
+// }
+// else{
+//     console.log("Invalid input");
+// }
+//---------------------------------------------------
 const fs = require('fs');
-if(input[2]=='add'){
-    fs.writeFileSync(input[3],input[4])
-}
-else if(input[2]=='remove'){
-    fs.unlinkSync(input[3])
-}
-else{
-    console.log("Invalid input");
+const path = require('path');
+const dirPath = path.join(__dirname,'files')
+
+for(i=0;i<5;i++){
+    fs.writeFileSync(`${dirPath}/Hello${i}`,"Hello there")
 }
