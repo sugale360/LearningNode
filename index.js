@@ -45,10 +45,10 @@
 //     fs.writeFileSync(`${dirPath}/Hello${i}`,"Hello there")
 // }
 //---------------------------------------------------
-const fs = require('fs');
-const path = require('path');
-const dir = path.join(__dirname,'crud');
-const filePath = `${dir}/apple.txt`;
+// const fs = require('fs');
+// const path = require('path');
+// const dir = path.join(__dirname,'crud');
+// const filePath = `${dir}/apple.txt`;
 // fs.writeFileSync(filePath,'This is first text');
 // fs.readFile(filePath,'utf8',(err, item)=>{
 //     console.log(item);
@@ -60,3 +60,4 @@ const filePath = `${dir}/apple.txt`;
 //     if(!err) console.log("File renamed");
 // })
 // fs.unlinkSync(`${dir}/fruit.txt`);
+//---------------------------------------------------
