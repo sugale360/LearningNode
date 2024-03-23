@@ -61,3 +61,29 @@
 // })
 // fs.unlinkSync(`${dir}/fruit.txt`);
 //---------------------------------------------------
+
+const express = require('express');
+const app = express();
+const path = require('path');
+const publicPath = path.join(__dirname, 'public')
+
+// app.get("/",(req,res)=>{
+//     res.send("Hello Home Page");
+// });
+// app.get("/about",(req,res)=>{
+//     let name = req.query.name;
+//     res.send("Hello About Page"+ name);
+// })
+// app.get("/*",(req,res)=>{
+//     res.send("Error Page");
+// })
+// app.use('/public',express.static(publicPath));
+
+app.get('',(req,res)=>{
+    res.sendFile(`${publicPath}/index.html`)
+})
+
+app.get('*',(req,res)=>{
+    res.sendFile(`${publicPath}/404page.html`)
+})
+app.listen(5000);
