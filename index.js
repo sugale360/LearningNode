@@ -62,10 +62,10 @@
 // fs.unlinkSync(`${dir}/fruit.txt`);
 //---------------------------------------------------
 
-const express = require('express');
-const app = express();
-const path = require('path');
-const publicPath = path.join(__dirname, 'public')
+// const express = require('express');
+// const app = express();
+// const path = require('path');
+// const publicPath = path.join(__dirname, 'public')
 
 // app.get("/",(req,res)=>{
 //     res.send("Hello Home Page");
@@ -79,11 +79,81 @@ const publicPath = path.join(__dirname, 'public')
 // })
 // app.use('/public',express.static(publicPath));
 
-app.get('',(req,res)=>{
-    res.sendFile(`${publicPath}/index.html`)
-})
+// app.get('',(req,res)=>{
+//     res.sendFile(`${publicPath}/index.html`)
+// })
 
-app.get('*',(req,res)=>{
-    res.sendFile(`${publicPath}/404page.html`)
+// app.get('*',(req,res)=>{
+//     res.sendFile(`${publicPath}/404page.html`)
+// })
+// app.listen(5000);
+//-----------------------------------------------------------
+// Application level middleware
+// const express = require('express');
+// const app = express();
+// const reqFilter = (req,res,next)=>{
+//     if(!req.query.age){
+//         res.send('Please provide age')
+//     }
+//     else if(req.query.age < 18){
+//         res.send('Not Allowed')
+//     }
+//     else {
+//         next();
+//     }
+    
+// };
+// app.use(reqFilter);
+// app.get('/',(req,res)=>{
+//     res.send("Hello Home page")
+// })
+// app.listen(5000,(err)=>{
+//     if(err){
+//         console.log("Error starting server");
+//     }
+//     else console.log(`Server started on port 5000`);
+// });
+//-----------------------------------------------------------
+// Route Level middleware
+// const express = require('express');
+// const app = express();
+// const reqFilter = (req,res,next)=>{
+//     if(!req.query.age){
+//         res.send('Please provide age')
+//     }
+//     else if(req.query.age < 18){
+//         res.send('Not Allowed')
+//     }
+//     else {
+//         next();
+//     } 
+// };
+// app.get('/',(req,res)=>{
+//     res.send("Hello Home page")
+// })
+// app.get('/users',reqFilter,(req,res)=>{
+//     res.send("Hello Users page")
+// })
+// app.listen(5000,(err)=>{
+//     if(err){
+//         console.log("Error starting server");
+//     }
+//     else console.log(`Server started on port 5000`);
+// });
+//-----------------------------------------------------------
+// Route Level middleware - from another file
+const express = require('express');
+const app = express();
+const reqFilter = require('./middleware');
+app.get('/',(req,res)=>{
+    res.send("Hello Home page")
 })
-app.listen(5000);
+app.get('/users',reqFilter,(req,res)=>{
+    res.send("Hello Users page")
+})
+app.listen(5000,(err)=>{
+    if(err){
+        console.log("Error starting server");
+    }
+    else console.log(`Server started on port 5000`);
+});
