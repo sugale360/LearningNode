@@ -142,15 +142,39 @@
 // });
 //-----------------------------------------------------------
 // Route Level middleware - from another file
+// const express = require('express');
+// const app = express();
+// const reqFilter = require('./middleware');
+// app.get('/',(req,res)=>{
+//     res.send("Hello Home page")
+// })
+// app.get('/users',reqFilter,(req,res)=>{
+//     res.send("Hello Users page")
+// })
+// app.listen(5000,(err)=>{
+//     if(err){
+//         console.log("Error starting server");
+//     }
+//     else console.log(`Server started on port 5000`);
+// });
+//-----------------------------------------------------------
+// Route Level middleware
+
 const express = require('express');
 const app = express();
 const reqFilter = require('./middleware');
+const route = express.Router();
+route.use(reqFilter);
 app.get('/',(req,res)=>{
     res.send("Hello Home page")
 })
-app.get('/users',reqFilter,(req,res)=>{
+route.get('/users',reqFilter,(req,res)=>{
     res.send("Hello Users page")
 })
+route.get('/contact',reqFilter,(req,res)=>{
+    res.send("Hello Contact page")
+})
+app.use('/',route);
 app.listen(5000,(err)=>{
     if(err){
         console.log("Error starting server");
