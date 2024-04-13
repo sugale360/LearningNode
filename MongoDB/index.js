@@ -11,6 +11,7 @@ const main = async () => {
   let data = await connectDB();
   data = await data.find().toArray();
 console.warn(data);
+return data;
 }
 
-main();
+module.exports = main;
